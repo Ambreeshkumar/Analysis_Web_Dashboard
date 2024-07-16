@@ -1,0 +1,53 @@
+{% extends "app/base.html" %}
+
+{% block title %}Dataset Table{% endblock %}
+
+{% block content %}
+<h1>Dataset Table</h1>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>end_year</th>
+            <th>intensity</th>
+            <th>sector</th>
+            <th>topic</th>
+            <th>insight</th>
+            <th>url</th>
+            <th>region</th>
+            <th>start_year</th>
+            <th>impact</th>
+            <th>added</th>
+            <th>published</th>
+            <th>country</th>
+            <th>relevance</th>
+            <th>pestle</th>
+            <th>source</th>
+            <th>title</th>
+            <th>likelihood</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in Data %}
+        <tr>
+            <td>{{ row.end_year }}</td>
+            <td>{{ row.intensity }}</td>
+            <td>{{ row.sector }}</td>
+            <td>{{ row.topic }}</td>
+            <td>{{ row.insight }}</td>
+            <td>{{ row.url }}</td>
+            <td>{{ row.region }}</td>
+            <td>{{ row.start_year }}</td>
+            <td>{{ row.impact }}</td>
+            <td>{{ row.added }}</td>
+            <td>{{ row.published }}</td>
+            <td>{{ row.country }}</td>
+            <td>{{ row.relevance }}</td>
+            <td>{{ row.pestle }}</td>
+            <td>{{ row.source }}</td>
+            <td>{{ row.title }}</td>
+            <td>{{ row.likelihood }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

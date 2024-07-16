@@ -1,0 +1,28 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block title %}Analytics{% endblock %}
+
+{% block content %}
+<h1 class="mt-10">Analytics</h1>
+<!-- Chart -->
+<div class="row mt-4">
+    <div class="col-md-6" area-label='chart' width ="700" height ="700">
+        <canvas id="crmChart"></canvas>
+        <script id="topicData" type="application/json">{{ topic|safe }}</script>
+        <script id="topicCountData" type="application/json">{{ topic_count|safe }}</script>
+    </div>
+
+    <div class ="col-md-6 "area-label='chart' with = "500" height ="500" > 
+        <canvas id="donutChart"></canvas>
+        <script id = "sourceLabels" type = application/json > {{ source|safe}} </script>
+        <script id="total_impactData" type="application/json">{{ total_impact|safe }}</script>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block extra_script %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'app/js/charts.js' %}"></script>
+{% endblock %}

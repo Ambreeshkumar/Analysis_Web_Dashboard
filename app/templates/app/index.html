@@ -1,0 +1,77 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block title %}Data Dashboard{% endblock %}
+
+{% block content %}
+<h1 class="mt-5">Data Dashboard</h1>
+<div class="row mt-4">
+    <div class="col-md-4">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Total Data Entries</h5>
+                <p class="card-text">{{ total_entries }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Average Intensity</h5>
+                <p class="card-text">{{ avg_intensity }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Max Intensity</h5>
+                <p class="card-text">{{ max_intensity }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mt-3">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Min Intensity</h5>
+                <p class="card-text">{{ min_intensity }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mt-3">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Entries with Intensity > 50</h5>
+                <p class="card-text">{{ high_intensity_count }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mt-3">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Most Common Sector</h5>
+                <p class="card-text">{{ common_sector.sector }} ({{ common_sector.sector_count }})</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h2 class="mt-5">Charts</h2>
+<div class="row mt-4">
+    <div class="col-md-6" area-label='chart' width ="700" height ="700" >
+        <canvas id="sectorChart"></canvas>
+        <script id="sectorLabels" type="application/json">{{ sectors|safe }}</script>
+        <script id="sectorData" type="application/json">{{ sector_counts|safe }}</script>
+    </div>
+    <div class="col-md-6">
+        <canvas id="regionChart"></canvas>
+        <script id="regionLabels" type="application/json">{{ countries|safe }}</script>
+        <script id="regionData" type="application/json">{{ avg_likelihoods|safe }}</script>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_script %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'app/js/charts.js' %}"></script>
+{% endblock %}

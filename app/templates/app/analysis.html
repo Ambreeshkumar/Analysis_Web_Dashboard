@@ -1,0 +1,40 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block title %}Analytics{% endblock %}
+
+{% block content %}
+<h1 class="mt-10">Analytics</h1>
+<!-- Chart -->
+<div class="row mt-4">
+    <div class="col-md-6" area-label='chart' width ="700" height ="700">
+        <canvas id="intensityChart"></canvas>
+        <script id="intensityLabels" type="application/json">{{ intensity_labels|safe }}</script>
+        <script id="intensityData" type="application/json">{{ intensity_data|safe }}</script>
+    </div>
+
+    <div class ="col-md-6 "area-label='chart' with = "700" height ="700" > 
+        <canvas id="relevanceChart"></canvas>
+        <script id = "relevanceLabels" type = application/json > {{ relevance_labels|safe}} </script>
+        <script id="relevanceData" type="application/json">{{ relevance_data|safe }}</script>
+    </div>
+
+    <div class ="col-md-6 "area-label='chart' with = "700" height ="700" > 
+        <canvas id="intensityRegionChart"></canvas>
+        <script id = "intensityRegionLabels" type = application/json > {{ intensity_Region_labels|safe}} </script>
+        <script id="intensityRegionData" type="application/json">{{ intensity_Region_data|safe }}</script>
+    </div>
+
+    <div class ="col-md-6 "area-label='chart' with = "500" height ="500" > 
+        <canvas id="regionalImpactsChart"></canvas>
+        <script id = "regionalImpactsLabels" type = application/json > {{ regional_impacts_labels|safe}} </script>
+        <script id="regionalImpactsData" type="application/json">{{ regional_impacts_data|safe }}</script>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block extra_script %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'app/js/charts.js' %}"></script>
+{% endblock %}
